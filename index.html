@@ -37,7 +37,7 @@
         }
 
         .card {
-            max-width: 800px;
+            max-width: 1400px;
             width: 100%;
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -90,25 +90,33 @@
 
         /* Content */
         .content {
-            padding: 0;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
         }
 
         .section {
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .section:first-child {
+            grid-column: 1 / -1;
         }
 
         .section:last-child {
-            border-bottom: none;
+            grid-column: 1 / -1;
         }
 
         .section-title {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--grey);
-            margin-bottom: 1rem;
+            color: var(--green);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
         }
 
         .section-intro {
@@ -120,8 +128,8 @@
         .tip-block {
             background: var(--bg-secondary);
             border-radius: 8px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .tip-block:last-child {
@@ -130,40 +138,41 @@
 
         .tip-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--green);
-            margin-bottom: 0.5rem;
+            color: var(--white);
+            margin-bottom: 0.35rem;
         }
 
         .tip-text {
-            color: var(--white);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: var(--grey);
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .tip-quote {
             font-style: italic;
-            color: var(--grey);
-            margin-top: 0.5rem;
-            padding-left: 1rem;
+            color: var(--green-dim);
+            margin-top: 0.4rem;
+            padding-left: 0.75rem;
             border-left: 2px solid var(--green-dark);
+            font-size: 0.8rem;
         }
 
         /* Table */
         .tips-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            font-size: 0.8rem;
         }
 
         .tips-table th {
             text-align: left;
-            padding: 0.75rem;
+            padding: 0.5rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -172,8 +181,7 @@
         }
 
         .tips-table td {
-            padding: 0.75rem;
-            font-size: 0.85rem;
+            padding: 0.5rem;
             border-bottom: 1px solid var(--border);
             vertical-align: top;
         }
@@ -196,13 +204,17 @@
         .bullet-list {
             list-style: none;
             padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem 1rem;
         }
 
         .bullet-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.25rem;
+            padding: 0.35rem 0;
+            padding-left: 1rem;
             position: relative;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .bullet-list li::before {
@@ -220,7 +232,7 @@
         /* Footer */
         .footer {
             background: var(--bg-secondary);
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             border-top: 1px solid var(--border);
         }
 
@@ -231,10 +243,15 @@
             text-align: center;
         }
 
+        @media (max-width: 1000px) {
+            .content { grid-template-columns: 1fr; }
+            .bullet-list { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 600px) {
             body { padding: 1rem; }
             .header { padding: 1.5rem; }
-            .section { padding: 1.25rem 1.5rem; }
+            .content { padding: 1rem 1.5rem; }
             .tips-table td:first-child { width: 40%; }
         }
     </style>
