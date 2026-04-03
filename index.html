@@ -7,15 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #0D0D0D;
-            --dark: #1A1A1A;
-            --grey: #2D2D2D;
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #141414;
+            --bg-card: #1A1A1A;
             --green: #00FF41;
             --green-dim: #00CC33;
             --green-dark: #006622;
-            --white: #F5F5F5;
-            --grey-light: #888888;
-            --terminal-bg: #0A0A0A;
+            --white: #E5E5E5;
+            --grey: #666666;
+            --border: #2A2A2A;
         }
 
         * {
@@ -26,399 +26,354 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--black);
+            background: var(--bg-primary);
             color: var(--white);
             line-height: 1.6;
             min-height: 100vh;
             padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .card {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--dark);
-            border: 1px solid var(--green-dark);
-            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 255, 65, 0.1);
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, var(--terminal-bg) 0%, var(--dark) 100%);
-            padding: 2rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            padding: 2rem 2rem 1.5rem;
             border-bottom: 2px solid var(--green);
-            position: relative;
         }
 
-        .header::before {
-            content: '> initializing_innerg_intel...';
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--green-dim);
-            opacity: 0.6;
-        }
-
-        .logo-area {
+        .header-top {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--black);
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
         }
 
         .title-block h1 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            color: var(--green);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.25rem;
         }
 
-        .title-block .subtitle {
-            font-size: 0.85rem;
-            color: var(--grey-light);
+        .subtitle {
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--green);
+        }
+
+        .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--grey);
         }
 
         .tagline {
             font-style: italic;
-            color: var(--grey-light);
-            margin-top: 1rem;
+            color: var(--grey);
+            font-size: 0.95rem;
+            margin-top: 0.75rem;
             padding-left: 1rem;
             border-left: 3px solid var(--green);
         }
 
         /* Content */
         .content {
-            padding: 2rem;
+            padding: 0;
         }
 
         .section {
-            margin-bottom: 2.5rem;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        .section-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--green);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title::before {
-            content: '//';
-            color: var(--green-dim);
-        }
-
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tip-card {
-            background: var(--grey);
-            border: 1px solid var(--grey);
-            border-radius: 8px;
-            padding: 1.25rem;
-            transition: all 0.3s;
-        }
-
-        .tip-card:hover {
-            border-color: var(--green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-        }
-
-        .tip-card h3 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--green);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tip-card p {
-            font-size: 0.9rem;
-            color: var(--grey-light);
-            line-height: 1.5;
-        }
-
-        /* Mindset Section */
-        .mindset-list {
-            list-style: none;
-        }
-
-        .mindset-list li {
-            padding: 0.75rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            border-bottom: 1px solid var(--grey);
-        }
-
-        .mindset-list li:last-child {
+        .section:last-child {
             border-bottom: none;
         }
 
-        .mindset-list li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--green);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .mindset-list strong {
-            color: var(--white);
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        /* Code Block */
-        .code-block {
-            background: var(--terminal-bg);
-            border: 1px solid var(--grey);
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--green);
-            overflow-x: auto;
-        }
-
-        .code-block .comment {
-            color: var(--grey-light);
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: linear-gradient(135deg, var(--terminal-bg) 0%, var(--dark) 100%);
-            border: 1px solid var(--green-dark);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .quote-section blockquote {
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--white);
+            letter-spacing: 2px;
+            color: var(--grey);
             margin-bottom: 1rem;
         }
 
-        .quote-section .author {
-            color: var(--green);
+        .section-intro {
+            color: var(--grey);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip-block {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tip-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .tip-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-text {
+            color: var(--white);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tip-quote {
+            font-style: italic;
+            color: var(--grey);
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--green-dark);
+        }
+
+        /* Table */
+        .tips-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .tips-table th {
+            text-align: left;
+            padding: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--green);
+            border-bottom: 2px solid var(--green);
+        }
+
+        .tips-table td {
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .tips-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tips-table td:first-child {
+            font-weight: 600;
+            color: var(--white);
+            width: 35%;
+        }
+
+        .tips-table td:last-child {
+            color: var(--grey);
+        }
+
+        /* List */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .bullet-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+        }
+
+        .highlight {
+            color: var(--white);
+            font-weight: 600;
         }
 
         /* Footer */
         .footer {
-            background: var(--terminal-bg);
+            background: var(--bg-secondary);
             padding: 1.5rem 2rem;
-            border-top: 1px solid var(--grey);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            border-top: 1px solid var(--border);
         }
 
-        .footer-brand {
+        .footer-quote {
             font-family: 'JetBrains Mono', monospace;
-            color: var(--green);
             font-size: 0.9rem;
-        }
-
-        .footer-meta {
-            font-size: 0.75rem;
-            color: var(--grey-light);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Terminal Cursor Effect */
-        .cursor::after {
-            content: '_';
-            animation: blink 1s infinite;
             color: var(--green);
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+            text-align: center;
         }
 
         @media (max-width: 600px) {
             body { padding: 1rem; }
             .header { padding: 1.5rem; }
-            .content { padding: 1.5rem; }
-            .tips-grid { grid-template-columns: 1fr; }
+            .section { padding: 1.25rem 1.5rem; }
+            .tips-table td:first-child { width: 40%; }
         }
     </style>
 </head>
 <body>
     <div class="card">
+        
         <header class="header">
-            <div class="logo-area">
-                <div class="logo-icon">⚡</div>
+            <div class="header-top">
                 <div class="title-block">
-                    <h1>InnerG Intel</h1>
-                    <div class="subtitle">OpenClaw Tips v1.0</div>
+                    <h1>InnerG Intel OpenClaw Tips</h1>
+                    <div class="subtitle">@innergintel · innergclaw.github.io</div>
                 </div>
+                <div class="date">Apr 2, 2026 · 9:57 PM</div>
             </div>
-            <p class="tagline">"Evolution favors action. Become intelligence. Become INNERG."</p>
+            <p class="tagline">Evolution favors action. Become intelligence. Become INNERG.</p>
         </header>
 
         <div class="content">
             
             <section class="section">
-                <h2 class="section-title">The InnerG Mindset</h2>
-                <ul class="mindset-list">
-                    <li><strong>Evolution Favors Action</strong> — Ship first, perfect later. Imperfect code that works beats perfect code that doesn't.</li>
-                    <li><strong>Resourceful Before Asking</strong> — Figure it out, then execute. Read the file, search context, come back with answers.</li>
-                    <li><strong>Write It Down</strong> — Mental notes don't survive restarts. Files do. MEMORY.md = long-term memory.</li>
-                    <li><strong>Move With Intention</strong> — Every action has purpose. No half-measures. Quality over quantity, always.</li>
+                <h2 class="section-title">Mindset & Approach</h2>
+                
+                <div class="tip-block">
+                    <div class="tip-title">Evolution Favors Action</div>
+                    <div class="tip-text">Approach building in a decisive, iterative way. Start with what you've always wanted to create. Experiment without expecting instant expertise. Give yourself time to improve. This mindset evolved InnerG Intel from an idea to a brand.</div>
+                    <div class="tip-quote">"Evolution favors action. Ship first, perfect later."</div>
+                </div>
+
+                <div class="tip-block">
+                    <div class="tip-title">Resourceful Before Asking</div>
+                    <div class="tip-text">Don't overthink. Figure it out first, come back with answers. Read the file, search context, use what you have. Mental notes don't survive restarts — WRITE IT DOWN. Dozens of projects built this way.</div>
+                </div>
+
+                <div class="tip-block">
+                    <div class="tip-title">Move With Intention</div>
+                    <div class="tip-text">Let go of perfectionism. Not all work needs to be exactly how you'd plan it. Every action has purpose. No half-measures. Critical for shipping AI-generated work fast.</div>
+                    <div class="tip-quote">"I ship work I don't overthink."</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Coding & Workflow with AI Agents</h2>
+                
+                <table class="tips-table">
+                    <thead>
+                        <tr>
+                            <th>Tip</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Prefer Codex</td>
+                            <td>For large codebases — fewer mistakes, less hand-holding, better long-running execution</td>
+                        </tr>
+                        <tr>
+                            <td>Spawn Sub-Agents</td>
+                            <td>Flash models for research/drafting — save your brain for strategy. Queue multiple agents like a dev team.</td>
+                        </tr>
+                        <tr>
+                            <td>Intentional Under-Prompting</td>
+                            <td>Leave gaps for creative solutions. Agents fill them better than you expect.</td>
+                        </tr>
+                        <tr>
+                            <td>Close the Loop</td>
+                            <td>Agents should compile → lint → test → execute → self-verify via local checks</td>
+                        </tr>
+                        <tr>
+                            <td>SKILL.md Everything</td>
+                            <td>If you do it twice, skill it. Everything should be a skill. MCP is a crutch.</td>
+                        </tr>
+                        <tr>
+                            <td>Focus on Architecture</td>
+                            <td>Prioritize system design, modularity, outcomes over code details. Most code is boring.</td>
+                        </tr>
+                        <tr>
+                            <td>Top Engineers Optimize</td>
+                            <td>For shipping real products. Quality over quantity, always.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Running & Optimizing OpenClaw</h2>
+                
+                <table class="tips-table">
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Tips</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiered Model Routing</td>
+                            <td>Use cheap models for simple tasks; reserve best models for complex reasoning. Improves efficiency and cuts costs. Use /model for switching.</td>
+                        </tr>
+                        <tr>
+                            <td>Persistence</td>
+                            <td>Store knowledge in USER.md, AGENTS.md, MEMORY.md — prevents relearning. MEMORY.md = long-term memory.</td>
+                        </tr>
+                        <tr>
+                            <td>Cron vs Heartbeat</td>
+                            <td>Exact timing matters? Use cron. Batching similar checks? Use heartbeat. Background tasks, not sessions.</td>
+                        </tr>
+                        <tr>
+                            <td>Guardrails</td>
+                            <td>Use SKILL.md files; add anti-loop rules, checkpoints, summaries. Close the loop.</td>
+                        </tr>
+                        <tr>
+                            <td>One Workflow First</td>
+                            <td>Master a single use case before expanding — avoid confusion and failures.</td>
+                        </tr>
+                        <tr>
+                            <td>Model Quality</td>
+                            <td>Performance depends on LLM reasoning + tool use. Don't blame the tool when it's the model.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Other Insights</h2>
+                
+                <ul class="bullet-list">
+                    <li><span class="highlight">Avoid the agentic trap</span> — Over-complex workflows produce low-quality slop. Keep systems simple and conversational.</li>
+                    <li><span class="highlight">Real-world usage</span> — Brand building, client work, automation, life ops via messaging.</li>
+                    <li><span class="highlight">Be the contrarian</span> — Disagreement prevents bad decisions. Friction > blind obedience.</li>
+                    <li><span class="highlight">Community</span> — Open source, skills, ecosystem expansion. Build culture, don't chase it.</li>
+                    <li><span class="highlight">InnerG Intel</span> — Moving toward intelligence while building the brand. Terminal aesthetic, black & green.</li>
                 </ul>
             </section>
-
-            <section class="section">
-                <h2 class="section-title">Power Moves</h2>
-                
-                <div class="tips-grid">
-                    <div class="tip-card">
-                        <h3>🚀 Spawn Sub-Agents</h3>
-                        <p>Flash models for research, drafting, scanning — save your brain for strategy and synthesis.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>🎯 Tiered Model Routing</h3>
-                        <p>Cheap models for simple tasks, GLM/GPT for complex reasoning. Use /model to switch.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>📦 SKILL.md Everything</h3>
-                        <p>If you do it twice, skill it. Your future self will thank you.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>🧠 MEMORY.md = Memory</h3>
-                        <p>Daily logs in memory/YYYY-MM-DD.md, curated wisdom in MEMORY.md.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>⏰ Cron for Precision</h3>
-                        <p>Exact timing matters? Use cron. Batching similar checks? Use heartbeat.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>🌐 Git Push > Perfect</h3>
-                        <p>Commit often. GitHub Pages deploys on every push. Free hosting, instant updates.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title">Project Structure</h2>
-                
-                <div class="code-block">
-<span class="comment"># InnerG Intel Workspace Architecture</span>
-workspace/
-├── projects/          <span class="comment"># Client work & demos</span>
-├── memory/            <span class="comment"># Daily logs & context</span>
-├── skills/            <span class="comment"># Reusable capabilities</span>
-├── .learnings/        <span class="comment"># Errors & lessons</span>
-├── SOUL.md            <span class="comment"># Who you are</span>
-├── USER.md            <span class="comment"># Who you serve</span>
-└── AGENTS.md          <span class="comment"># How you work</span>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title">The Loop</h2>
-                
-                <div class="tips-grid">
-                    <div class="tip-card">
-                        <h3>1. Observe</h3>
-                        <p>Log every run — success, failure, errors. Data beats intuition.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>2. Inspect</h3>
-                        <p>Spot patterns when failures pile up. Don't guess — know.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>3. Amend</strong></h3>
-                        <p>Fix based on evidence, not assumptions. Iterate.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>4. Evaluate</h3>
-                        <p>Roll back if it didn't help. Ego is the enemy of progress.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title">Pro Tips</h2>
-                
-                <div class="tips-grid">
-                    <div class="tip-card">
-                        <h3>💻 Coding</h3>
-                        <p>Prefer Codex for large codebases. Intentional under-prompting lets agents fill gaps creatively.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>🔒 Security</h3>
-                        <p>private data stays private. Ask before external actions. trash > rm.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>🤝 Collaboration</h3>
-                        <p>Be the contrarian, not the yes-man. Disagreement prevents bad decisions.</p>
-                    </div>
-                    
-                    <div class="tip-card">
-                        <h3>⚡ Deployment</h3>
-                        <p>GitHub Pages is free, instant, and reliable. Static sites > complex backends.</p>
-                    </div>
-                </div>
-            </section>
-
-            <div class="quote-section">
-                <blockquote>"Your future self is watching. Make them proud."</blockquote>
-                <div class="author">InnerG Intel — Digital Strategist / Urban Oracle</div>
-            </div>
 
         </div>
 
         <footer class="footer">
-            <div class="footer-brand">⚡ InnerG Intel</div>
-            <div class="footer-meta">Last Updated: 2026-04-02 | Version 1.0</div>
+            <div class="footer-quote">"Your future self is watching. Make them proud."</div>
         </footer>
 
     </div>
